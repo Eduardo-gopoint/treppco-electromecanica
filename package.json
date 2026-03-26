@@ -1,0 +1,11 @@
+{
+  "name": "treppco-electromecanica",
+  "version": "1.0.0",
+  "description": "Landing page Treppco - Electromecánica Industrial",
+  "scripts": {
+    "start": "npx serve -s . -l $PORT"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

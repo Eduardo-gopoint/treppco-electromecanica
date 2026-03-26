@@ -1,0 +1,381 @@
+/* ============================================
+   TREPPCO — Problemas Eléctricos
+   Estilos adicionales para landing page de servicio
+   ============================================ */
+
+/* ---- Form Wrappers Light Background ---- */
+.hero-form-wrap,
+.cta-form-wrap {
+  background: rgba(240, 240, 240, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.hero-form-wrap .hero-form-title {
+  color: #1A1A1A;
+}
+
+.hero-form-wrap .hero-form-subtitle {
+  color: #555;
+}
+
+.hero-form-wrap .form-group label,
+.cta-form-wrap .form-group label {
+  color: #333;
+}
+
+.hero-form-wrap .form-group input,
+.hero-form-wrap .form-group select,
+.hero-form-wrap .form-group textarea,
+.cta-form-wrap .form-group input,
+.cta-form-wrap .form-group select,
+.cta-form-wrap .form-group textarea {
+  background: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1A1A1A;
+}
+
+.hero-form-wrap .form-group input::placeholder,
+.hero-form-wrap .form-group textarea::placeholder,
+.cta-form-wrap .form-group input::placeholder,
+.cta-form-wrap .form-group textarea::placeholder {
+  color: #999;
+}
+
+.hero-form-wrap .form-group input:focus,
+.hero-form-wrap .form-group select:focus,
+.hero-form-wrap .form-group textarea:focus,
+.cta-form-wrap .form-group input:focus,
+.cta-form-wrap .form-group select:focus,
+.cta-form-wrap .form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(228, 30, 38, 0.12);
+}
+
+.hero-form-wrap .form-group select,
+.cta-form-wrap .form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.hero-form-wrap .form-checkbox label,
+.cta-form-wrap .form-checkbox label,
+.hero-form-wrap .form-disclaimer,
+.cta-form-wrap .form-disclaimer {
+  color: #777;
+}
+
+/* ---- Nav Logo Image ---- */
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* ---- Image Gallery Row ---- */
+.gallery-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.gallery-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ---- Benefits Grid (6 cards, 3x2) ---- */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.benefit-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.benefit-card:hover::before {
+  opacity: 1;
+}
+
+.benefit-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.benefit-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.benefit-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.benefits-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* ---- Process Grid (4 cards) ---- */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.process-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.process-card:hover {
+  border-color: rgba(228, 30, 38, 0.2);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.process-step {
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(228, 30, 38, 0.15);
+  line-height: 1;
+  margin-bottom: 16px;
+  transition: var(--transition);
+}
+
+.process-card:hover .process-step {
+  color: rgba(228, 30, 38, 0.3);
+}
+
+.process-icon {
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.process-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.process-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- FAQ Section ---- */
+.faq-list {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-item:hover {
+  border-color: var(--border-hover);
+}
+
+.faq-item.active {
+  border-color: rgba(228, 30, 38, 0.2);
+  box-shadow: 0 4px 20px rgba(228, 30, 38, 0.08);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 28px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.faq-question:hover {
+  color: var(--accent);
+}
+
+.faq-chevron {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+}
+
+.faq-answer p {
+  padding: 0 28px 24px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ---- Form Checkbox ---- */
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.form-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.form-checkbox label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+/* ---- Footer Logo ---- */
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+/* ---- Footer Flags ---- */
+.footer-flags {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 1.4rem;
+}
+
+/* ============================================
+   RESPONSIVE — Problemas Eléctricos
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .gallery-row {
+    gap: 16px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gallery-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-question {
+    padding: 18px 20px;
+    font-size: 0.92rem;
+  }
+
+  .faq-answer p {
+    padding: 0 20px 20px;
+  }
+}
