@@ -1,8 +1,11 @@
 /* ============================================
-   TREPPCO — Problemas Eléctricos — JavaScript
+   TREPPCO — Electromecánica Industrial — JavaScript
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ---- Hero Slider ----
+    initHeroSlider();
 
     // ---- Navbar scroll ----
     const navbar = document.getElementById('navbar');
@@ -136,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    handleFormSubmit('heroContactForm', 'heroSubmitBtn', '.hero-form-wrap');
+    handleFormSubmit('presupuestoForm', 'presSubmitBtn', '.presupuesto-form-wrap');
     handleFormSubmit('contactForm', 'submitBtn', '.cta-form-wrap');
 
     // ---- Active nav link on scroll ----
@@ -165,3 +168,102 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', highlightNav, { passive: true });
 
 });
+
+/* ---- Hero Slider Logic ---- */
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.slider-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const progressBar = document.querySelector('.slider-progress-bar');
+    const heroSlider = document.querySelector('.hero-slider');
+
+    if (!slides.length) return;
+
+    let currentSlide = 0;
+    let progressInterval = null;
+    let progress = 0;
+    const SLIDE_DURATION = 6000;
+    const TICK = 50;
+
+    function goToSlide(index) {
+        // Remove active from current
+        slides[currentSlide].classList.remove('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+
+        currentSlide = index;
+
+        // Activate new slide
+        slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+
+        // Reset progress
+        progress = 0;
+        if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function nextSlide() {
+        goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        progressInterval = setInterval(() => {
+            progress += TICK;
+            const pct = (progress / SLIDE_DURATION) * 100;
+            if (progressBar) progressBar.style.width = pct + '%';
+
+            if (progress >= SLIDE_DURATION) {
+                nextSlide();
+            }
+        }, TICK);
+    }
+
+    function stopAutoplay() {
+        if (progressInterval) {
+            clearInterval(progressInterval);
+            progressInterval = null;
+        }
+    }
+
+    // Dot navigation
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.dataset.slide);
+            if (index !== currentSlide) {
+                goToSlide(index);
+            }
+            startAutoplay();
+        });
+    });
+
+    // Hover pause
+    if (heroSlider) {
+        heroSlider.addEventListener('mouseenter', stopAutoplay);
+        heroSlider.addEventListener('mouseleave', startAutoplay);
+    }
+
+    // Touch swipe support
+    let touchStartX = 0;
+
+    if (heroSlider) {
+        heroSlider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        heroSlider.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    goToSlide((currentSlide + 1) % slides.length);
+                } else {
+                    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+                }
+                startAutoplay();
+            }
+        }, { passive: true });
+    }
+
+    // Start autoplay
+    startAutoplay();
+}
